@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         model: Tag,
         attributes: ['id', 'tag_name'],
         through: ProductTag,
-        as: 'tagged_product'
+        as: 'tagged'
       }
     ]
   })
@@ -38,20 +38,19 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ['id', 'category_name']
+        attributes: ['category_name']
       },
       {
         model: Tag,
         attributes: ['id', 'tag_name'],
         through: ProductTag,
-        as: 'tagged_product'
-        
+        as: 'tagged'
       }
     ]
   })
     .then(dbProductData => {
       if (!dbProductData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'No product found with this id' });
         return;
       }
       res.json(dbProductData);
@@ -77,6 +76,7 @@ router.post('/', (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
+    category_id: req.body.category_id,
     tagIds: req.body.tagIds
   })
     .then((product) => {
