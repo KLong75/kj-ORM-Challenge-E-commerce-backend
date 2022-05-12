@@ -8,6 +8,9 @@ The E-Commerce Back End App uses and Express.js API, Sequelize, and a MySQL data
 ## Walkthrough Video
 
 ## Screenshots
+![e-commerce-back-end1](https://user-images.githubusercontent.com/98487770/168104528-131d3d72-e538-4af1-b4c7-3513cc1e6cc0.png)
+![e-commerce-back-end2](https://user-images.githubusercontent.com/98487770/168104551-aaed771c-fb2b-4a7e-ae5e-df8af2620b25.png)
+![e-commerce-back-end3](https://user-images.githubusercontent.com/98487770/168104582-e9a783c7-954e-4adb-911f-ed9fc828ad17.png)
 
 ## Table of Contents
 - [Installation](#installation)
