@@ -5,7 +5,6 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', (req, res) => {
-  // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
     include: [
@@ -16,7 +15,13 @@ router.get('/', (req, res) => {
       {
         model: Tag,
         attributes: ['id', 'tag_name']
-      }
+      },
+      {
+        model: Tag,
+        attributes: ['tag_name'],
+        through: ProductTag,
+        as: 'tagged_product'
+      },
     ]
   })
     .then(dbProductData => res.json(dbProductData))
@@ -26,7 +31,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get one product
+
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // includes associated Category and Tag data
@@ -41,16 +46,24 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Tag,
-        attributes: ['id', 'tag_name']
+        attributes: ['id', 'tag_name'],
+        
+      },
+      {
+        model: Tag,
+        attributes: ['tag_name'],
+        through: ProductTag,
+        as: 'tagged_product'
+
       }
     ]
   })
-    .then(dbUserData => {
-      if (!dbUserData) {
+    .then(dbProductData => {
+      if (!dbProductData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbProductData);
     })
     .catch(err => {
       console.log(err);
@@ -149,7 +162,7 @@ router.delete('/:id', (req, res) => {
         res.status(404).json({ message: 'No product found with this id' });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbProductData);
     })
     .catch(err => {
       console.log(err);
