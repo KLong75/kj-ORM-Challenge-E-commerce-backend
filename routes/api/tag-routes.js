@@ -14,8 +14,6 @@ router.get('/', (req, res) => {
         through: ProductTag,
         as: 'tagged_product'
       }
-      
-      
     ]
   })
     .then(dbTagData => res.json(dbTagData))
@@ -37,15 +35,7 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
         through: ProductTag,
         as: 'tagged_product'
-      },
-/*
-      {
-        model: Product,
-        attributes: ['product_name'],
-        through: ProductTag,
-        as: 'tagged_product'
       }
-*/
     ]
   })
     .then(dbTagData => res.json(dbTagData))
@@ -86,7 +76,7 @@ router.put('/:id', (req, res) => {
         res.status(404).json({ message: 'No tag found with this id' });
         return;
       }
-      res.json(dbtagData);
+      res.json(dbTagData);
     })
     .catch(err => {
       console.log(err);
