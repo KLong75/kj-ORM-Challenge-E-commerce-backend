@@ -6,6 +6,7 @@
 The E-Commerce Back End App uses and Express.js API, Sequelize, and a MySQL database to provide a back end for an e-commerce website that allows an online retailer to manage their online inventory.
 
 ## Walkthrough Video
+https://watch.screencastify.com/v/391hjzjs1Fxn36BgkK48
 
 ## Screenshots
 ![e-commerce-back-end1](https://user-images.githubusercontent.com/98487770/168104528-131d3d72-e538-4af1-b4c7-3513cc1e6cc0.png)
